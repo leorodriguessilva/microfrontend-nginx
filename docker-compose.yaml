@@ -1,0 +1,13 @@
+version: "3.9"
+services:
+  main:
+    build: ./main_page
+    container_name: main
+    ports:
+      - "8080:80"
+      
+  header:
+    build: ./header_fragment
+    container_name: header
+    ports:
+      - "8081:80"
