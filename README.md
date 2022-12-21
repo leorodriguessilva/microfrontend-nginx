@@ -6,17 +6,17 @@ This repository uses the SSI (server side includes) module from Nginx to inject 
 
 The project is composed by a main Nginx with a default page, which has instruction to inject a html page as a header fragment in the main page, thus rendering a whole page composed of a header fragment and a body text (nothing fancy). 
 
- - main_page
-  - Dockerfile
-  - index.html
-  - nginx.config
+ * main_page
+   * Dockerfile
+   * index.html
+   * nginx.config
 
   So the main page Nginx is configured with the SSI module on (see [nginx.conf](./main_page/conf/nginx.conf)), and a reverse proxy (`/header`) pointing to the host of the header html page named (surprisingly) as "header" (see [docker compose](docker-compose.yaml) file).
   And a [Dockerfile](./main_page/Dockerfile) to build a new Nginx image with new Nginx SSI configuration setup, plus the reverse proxy setup and the main html page with the SSI command to include the reverse proxy content.
 
- - header_fragment
-  - Dockerfile
-  - index.html
+ * header_fragment
+   * Dockerfile
+   * index.html
 
   The header fragment is much more simpler than the main page setup, as we just need a default Nginx (or any other web server to serve html pages). So i contains a [html page](./header_fragment/pages/index.html) which resembles the header of our application, and a [Dockerfile](./header_fragment/Dockerfile) which builds a new Nginx image with the html page and that is it.
 
